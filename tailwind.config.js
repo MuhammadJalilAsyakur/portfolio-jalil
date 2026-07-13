@@ -8,31 +8,39 @@ export default {
     theme: {
         extend: {
             colors: {
-                dark: {
-                    50: '#F0EEF8',
-                    100: '#E8E5F2',
-                    200: '#D4CEEA',
-                    300: '#C0B7E2',
-                    400: '#8B8A99',
-                    500: '#6C63FF',
-                    600: '#5D55FF',
-                    700: '#4E47CC',
-                    800: '#111118',
-                    900: '#0A0A0F',
+                brand: {
+                    bg: '#0A0E17',
+                    'bg-elev': '#121826',
+                    'bg-elev-2': '#161E2E',
+                    border: '#232C40',
+                    text: '#E9ECF3',
+                    'text-dim': '#8A93A8',
+                    'text-faint': '#5B6478',
+                    'accent': '#3ECF8E',
+                    'accent-dim': '#1F5C42',
+                    'accent-2': '#F5A623',
+                    'accent-3': '#5B8DEF',
                 },
             },
             fontFamily: {
-                syne: ['Syne', 'sans-serif'],
-                sans: ['DM Sans', 'sans-serif'],
+                'space-grotesk': ['Space Grotesk', 'sans-serif'],
+                inter: ['Inter', 'sans-serif'],
+                mono: ['JetBrains Mono', 'monospace'],
+            },
+            borderRadius: {
+                DEFAULT: '14px',
+            },
+            maxWidth: {
+                app: '1120px',
             },
             keyframes: {
-                pulse: {
-                    '0%, 100%': { opacity: '1', transform: 'scale(1)' },
-                    '50%': { opacity: '0.5', transform: 'scale(0.8)' },
-                }
+                floaty: {
+                    '0%, 100%': { transform: 'translateY(0px) rotate(-1deg)' },
+                    '50%': { transform: 'translateY(-14px) rotate(1deg)' },
+                },
             },
             animation: {
-                pulse: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                floaty: 'floaty 6s ease-in-out infinite',
             }
         },
     },

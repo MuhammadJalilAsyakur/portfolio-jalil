@@ -2,6 +2,10 @@
 
 A modern, clean portfolio website built with **React + Vite + Tailwind CSS** featuring dark/light mode support.
 
+## 🌐 Live Demo
+
+👉 **Visit the live portfolio:** [https://portfolio-jalil.vercel.app/](https://portfolio-jalil.vercel.app/)
+
 ## ✨ Features
 
 - **⚡ Fast & Modern** - Built with Vite for lightning-fast development and optimized builds

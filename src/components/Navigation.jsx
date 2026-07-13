@@ -1,32 +1,26 @@
 import React from 'react';
-import { useTheme } from '../context/ThemeContext';
-import { Sun, Moon } from 'lucide-react';
 
 export default function Navigation() {
-    const { isDark, toggleTheme } = useTheme();
-
     return (
-        <nav className="flex justify-between items-center py-6 px-6 border-b border-dark-200 dark:border-dark-700 mb-16">
-            <div className="font-syne font-bold text-lg tracking-tight">
-                jalil<span className="text-purple-500">.</span>dev
-            </div>
-
-            <div className="flex items-center gap-8">
-                <div className="hidden md:flex gap-7">
-                    <a href="#experience" className="text-sm text-dark-400 dark:text-dark-400 hover:text-dark-900 dark:hover:text-dark-50 transition">experience</a>
-                    <a href="#projects" className="text-sm text-dark-400 dark:text-dark-400 hover:text-dark-900 dark:hover:text-dark-50 transition">projects</a>
-                    <a href="#skills" className="text-sm text-dark-400 dark:text-dark-400 hover:text-dark-900 dark:hover:text-dark-50 transition">skills</a>
-                    <a href="#contact" className="text-sm text-dark-400 dark:text-dark-400 hover:text-dark-900 dark:hover:text-dark-50 transition">contact</a>
+        <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-sm" style={{ background: 'rgba(10, 14, 23, 0.72)', borderBottomColor: 'var(--border)' }}>
+            <nav className="max-w-app mx-auto px-7 py-4 flex items-center justify-between" style={{ borderBottom: '1px solid var(--border)' }}>
+                <div className="flex items-center gap-2" style={{ fontFamily: 'Space Grotesk', fontWeight: 700, fontSize: '16px', letterSpacing: '0.02em' }}>
+                    <span className="w-2 h-2 rounded-full" style={{ background: 'var(--accent)', boxShadow: '0 0 10px var(--accent)' }}></span>
+                    M. JALIL ASYAKUR
                 </div>
 
-                <button
-                    onClick={toggleTheme}
-                    className="p-2 rounded-lg bg-dark-100 dark:bg-dark-700 text-dark-900 dark:text-dark-50 hover:bg-dark-200 dark:hover:bg-dark-600 transition"
-                    aria-label="Toggle theme"
-                >
-                    {isDark ? <Sun size={18} /> : <Moon size={18} />}
-                </button>
-            </div>
-        </nav>
+                <div className="hidden md:flex gap-8 text-sm" style={{ color: 'var(--text-dim)' }}>
+                    <a href="#about" className="transition hover:text-white">About</a>
+                    <a href="#stack" className="transition hover:text-white">Stack</a>
+                    <a href="#experience" className="transition hover:text-white">Experience</a>
+                    <a href="#projects" className="transition hover:text-white">Projects</a>
+                    <a href="#education" className="transition hover:text-white">Education</a>
+                </div>
+
+                <a href="#contact" className="btn-ghost btn" style={{ fontFamily: 'JetBrains Mono', fontSize: '12px', padding: '8px 16px', border: '1px solid var(--accent-dim)', borderRadius: '8px', color: 'var(--accent)' }}>
+                    Hubungi →
+                </a>
+            </nav>
+        </header>
     );
 }

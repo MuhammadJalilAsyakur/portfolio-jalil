@@ -1,105 +1,87 @@
 import React from 'react';
 
+
+
 const projects = [
     {
-        title: 'INTRA BRIN — ELIN Module',
-        featured: true,
-        badge: 'Featured — Internship Project',
-        icon: '📱',
-        subtitle: 'Flutter · GetX · Clean Architecture · REST API',
-        description: 'A production-grade administrative service module embedded in BRIN\'s internal mobile platform. Handles vehicle loan requests, multi-step form flows with validation, real-time status tracking, and a multi-level approval workflow — all with role-based access control for civitas, service desk, reviewer, and examiner roles.',
-        modules: [
-            {
-                name: 'Vehicle Loan System',
-                desc: '3-step form with identity, detail, and document upload stages. Full validation with email regex, phone format, GetX state persistence.'
-            },
-            {
-                name: 'Request Tracking',
-                desc: 'Real-time status dashboard with filters, pull-to-refresh, skeleton loaders, and PDF download support.'
-            },
-            {
-                name: 'Approval Workflow',
-                desc: 'Dual-level review dashboards for Reviewer and Examiner roles. Approve/reject flows with modal confirmation.'
-            },
-            {
-                name: 'Role-Based Access',
-                desc: 'ElinRoleChecker permission system. Access-denied pages, role-specific views, data normalization to PostgreSQL enums.'
-            }
-        ]
+        title: 'INTRA BRIN — Modul ELIN',
+        tag: 'Production',
+        description: 'Modul layanan administrasi lengkap di platform mobile nasional BRIN — mobile UI Flutter + backend REST API.',
+        features: [
+            'End-to-end: peminjaman kendaraan, pelacakan, dan persetujuan berjenjang.',
+            'Clean Architecture (Domain / Data / Presentation) dengan GetX.',
+            'RBAC untuk 4 peran + normalisasi data ke enum PostgreSQL.',
+        ],
+        stack: ['Flutter', 'Dart', 'GetX', 'PostgreSQL']
     },
     {
         title: 'PanganKita',
-        featured: false,
-        description: 'Android app for Tangerang City Food Security Agency to digitize food product submission. UCD methodology, TAM-validated (BIU 4.50).',
-        tags: ['Kotlin', 'Figma', 'UCD']
+        tag: 'Skripsi',
+        description: 'Prototipe Android untuk digitalisasi proses pengajuan produk pangan di Dinas Ketahanan Pangan Kota Tangerang.',
+        features: [
+            'Menerapkan metodologi User-Centered Design dari riset hingga delivery.',
+            'Validasi TAM: PEOU 4.44, PU 4.34, Trust 4.42, BIU 4.50.',
+        ],
+        stack: ['Kotlin', 'Figma', 'Android Studio']
     },
     {
-        title: 'Kitabantu Indonesia',
-        featured: false,
-        description: 'Web-based job platform connecting seekers and employers. Focused on responsive, modern UI components with smooth UX.',
-        tags: ['React.js', 'Tailwind CSS']
+        title: 'KitaBantu Indonesia',
+        tag: 'Independent',
+        description: 'Platform web yang menghubungkan pencari kerja dan pemberi kerja secara efisien.',
+        features: [
+            'Menerjemahkan desain high-fidelity Figma jadi UI pixel-perfect berbasis komponen.',
+            'Fokus pada UI responsif dan modern.',
+        ],
+        stack: ['React.js', 'Tailwind CSS', 'JavaScript']
     }
 ];
 
 export default function Projects() {
     return (
-        <section id="projects" className="mb-25">
-            <div className="text-xs font-medium tracking-widest text-purple-500 uppercase mb-4">What I&apos;ve built</div>
-            <h2 className="font-syne font-bold text-4xl mb-12">Projects</h2>
+        <section id="projects" style={{ background: 'var(--bg)' }}>
+            <div className="wrap max-w-app mx-auto px-7">
+                <div className="reveal" style={{ marginBottom: '56px', maxWidth: '640px' }}>
+                    <div className="eyebrow">Proyek Pilihan</div>
+                    <h2 style={{ fontFamily: 'Space Grotesk', fontWeight: 600, fontSize: 'clamp(26px, 3.4vw, 38px)' }}>
+                        Yang sudah dibangun dan dikirim.
+                    </h2>
+                </div>
 
-            <div className="space-y-6">
-                {projects.map((project, idx) => (
-                    <div key={idx}>
-                        {project.featured ? (
-                            <div className="bg-dark-700 dark:bg-dark-800 dark:bg-opacity-50 border border-dark-200 dark:border-dark-600 rounded-3xl p-9 relative overflow-hidden">
-                                {/* Background glow effect */}
-                                <div className="absolute -top-20 -right-20 w-64 h-64 bg-purple-500 opacity-5 rounded-full blur-3xl pointer-events-none"></div>
+                <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '22px' }}>
+                    {projects.map((proj, idx) => (
+                        <div key={idx} style={{ background: 'var(--bg-elev)', border: '1px solid var(--border)', borderRadius: '14px', padding: '28px', display: 'flex', flexDirection: 'column', gap: '14px', transition: 'transform 0.25s, border-color 0.25s', cursor: 'pointer' }} onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-5px)'} onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                                <h3 style={{ fontFamily: 'Space Grotesk', fontSize: '18px' }}>
+                                    {proj.title}
+                                </h3>
+                                <span style={{ fontFamily: 'JetBrains Mono', fontSize: '10px', padding: '4px 10px', borderRadius: '20px', background: 'rgba(62, 207, 142, 0.1)', color: 'var(--accent)', whiteSpace: 'nowrap' }}>
+                                    {proj.tag}
+                                </span>
+                            </div>
 
-                                <div className="relative z-10">
-                                    <span className="inline-block bg-emerald-400 bg-opacity-10 border border-emerald-400 border-opacity-20 rounded-full px-4 py-1.5 text-xs text-emerald-300 mb-6 font-medium">
-                                        {project.badge}
+                            <p style={{ color: 'var(--text-dim)', fontSize: '13.5px', lineHeight: 1.5 }}>
+                                {proj.description}
+                            </p>
+
+                            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '7px' }}>
+                                {proj.features.map((feature, i) => (
+                                    <li key={i} style={{ color: 'var(--text-dim)', fontSize: '13px', paddingLeft: '16px', position: 'relative' }}>
+                                        <span style={{ position: 'absolute', left: 0, color: 'var(--accent-3)' }}>•</span>
+                                        {feature}
+                                    </li>
+                                ))}
+                            </ul>
+
+                            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginTop: 'auto', paddingTop: '6px' }}>
+                                {proj.stack.map((tech, i) => (
+                                    <span key={i} style={{ fontFamily: 'JetBrains Mono', fontSize: '10.5px', color: 'var(--text-faint)', background: 'var(--bg-elev-2)', border: '1px solid var(--border)', padding: '4px 9px', borderRadius: '6px' }}>
+                                        {tech}
                                     </span>
-
-                                    <div className="flex items-center gap-4 mb-3">
-                                        <div className="w-12 h-12 rounded-2xl bg-purple-500 bg-opacity-15 border border-purple-500 border-opacity-20 flex items-center justify-center text-2xl">
-                                            {project.icon}
-                                        </div>
-                                        <div>
-                                            <h3 className="font-syne font-bold text-2xl">{project.title}</h3>
-                                        </div>
-                                    </div>
-
-                                    <p className="text-sm text-purple-500 font-medium mb-4">{project.subtitle}</p>
-                                    <p className="text-base text-dark-400 dark:text-dark-400 leading-relaxed mb-6">{project.description}</p>
-
-                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                                        {project.modules.map((module, i) => (
-                                            <div key={i} className="bg-dark-100 dark:bg-dark-700 dark:bg-opacity-50 border border-dark-200 dark:border-dark-600 rounded-xl p-4">
-                                                <p className="text-sm font-semibold mb-1">{module.name}</p>
-                                                <p className="text-xs text-dark-400 dark:text-dark-400 leading-relaxed">{module.desc}</p>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
+                                ))}
                             </div>
-                        ) : (
-                            <div className="bg-dark-100 dark:bg-dark-700 bg-opacity-20 dark:bg-opacity-40 border border-dark-200 dark:border-dark-600 rounded-2xl p-6 hover:border-purple-500 hover:border-opacity-30 transition">
-                                <h3 className="font-syne font-bold text-lg mb-2">{project.title}</h3>
-                                <p className="text-sm text-dark-400 dark:text-dark-400 leading-relaxed mb-4">{project.description}</p>
-                                <div className="flex flex-wrap gap-2">
-                                    {project.tags.map((tag, i) => (
-                                        <span
-                                            key={i}
-                                            className="text-xs px-3 py-1 rounded-lg bg-purple-500 bg-opacity-15 border border-purple-500 border-opacity-30 text-purple-300 font-medium"
-                                        >
-                                            {tag}
-                                        </span>
-                                    ))}
-                                </div>
-                            </div>
-                        )}
-                    </div>
-                ))}
+                        </div>
+                    ))}
+                </div>
             </div>
         </section>
     );
